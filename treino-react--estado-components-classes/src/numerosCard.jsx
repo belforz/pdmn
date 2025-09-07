@@ -1,15 +1,16 @@
+import Numero from "./Numero";
+
 const NumerosCard = (props) => {
   return (
-    <div className="d-flex justify-content-center m-2">
-      <div className="d-flex flex-column align-items-stretch">
-        {props.Numero}
-      </div>
-      <div className="w-100 mt-2">
-        <div className="w-100">
+    <div className="m-2">
+      <Numero numeros={props.numeros} />
+
+      <div className="w-100 mt-4">
+        <div className="w-100 border border-success-subtle border border-3 rounded ">
           <button
             type="button"
-            onClick={() => console.log("Gerar Jogo")}
-            className="btn btn-success text-black bg-transparent w-100 py-1 fs-3"
+            onClick={props.onGerar}
+            className="btn btn-success border border-success text-black bg-transparent w-100 py-1 fs-3"
           >
             Gerar Jogo
           </button>
