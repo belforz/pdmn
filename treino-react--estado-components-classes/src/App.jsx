@@ -17,6 +17,7 @@ class App extends React.Component {
     this.setState({ numero: escolha_btn });
   };
 
+  
   render() {
     console.log(this.state);
     const cabecalho = "MEGA SENA";
