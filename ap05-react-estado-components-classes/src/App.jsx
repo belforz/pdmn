@@ -103,7 +103,7 @@ class App extends React.Component {
           <div className="row">
             <div className="col-12">
               {(!this.state.latitude && !this.state.msgErro) ? (
-                <Loading />
+                <Loading texto="Aguardando autorização"/>
               ) : this.state.msgErro ? (
                 <p className="border rounder p-2 fs-1 text-center">
                   é preciso dar permissão de acesso á localização. Atualize a
