@@ -1,12 +1,16 @@
-const Numero = (props) => {
-  if (!props.numeros) return null;
+import React from "react";
 
-  return (
-    <div className="d-flex justify-content-center">
-      <div className="d-flex">
-        {props.numeros.map((num, idx) => (
+
+export class Numero extends React.Component {
+  render() {
+    if (!this.props.numeros) return null;
+
+    return (
+      <div className="d-flex justify-content-center">
+        <div className="d-flex">
+          {this.props.numeros.map((num, id) => (
           <div
-            key={idx}
+            key={id}
             className="w-8rem card bg-success-subtle text-center border-success mx-1"
           >
             <div className="card-body ">
@@ -17,6 +21,7 @@ const Numero = (props) => {
       </div>
     </div>
   );
-};
+}
+}
 
 export default Numero;
