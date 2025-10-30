@@ -2,18 +2,25 @@ import React, { Component } from "react";
 import Busca from "./Busca";
 import { client } from "./Client";
 import PexesLogo from "./PexesLogo";
+import ListaImagens from "./components/ListaImage";
+import pexelsClient from "./utils/pexelsClient";
 import Image from "./Image";
 
 export default class App extends Component {
   state = {
     photos: [],
   };
-  pexelsClient = null;
+  
 
   onBuscaRealizado = (termo) => {
-    this.pexelsClient.photos.search({ query: termo }).then((result) => {
-      this.setState({ photos: result.photos });
-    });
+    pexelsClient.get('/search', {
+      params: {
+        query: termo
+      }
+      .then(result => {
+        this.setState({photos: result.data.photos})
+      })
+    })
   };
 
   componentDidMount() {
@@ -34,17 +41,9 @@ export default class App extends Component {
           />
         </div>
         <div className="col-12">
-          {this.state.photos.map((photo) => (
-            <div key={photo.id} className="">
-              <div className="w-100">
-                <Image
-                  src={photo.src.small}
-                  alt={photo.alt}
-                  photographer={photo.photographer}
-                />
-              </div>
+          <div className="grid">
+              <ListaImagens photos={this.state.photos}/> 
             </div>
-          ))}
         </div>
       </div>
     );
